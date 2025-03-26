@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .alert { padding: 10px; margin: 10px 0; }
+        .error { background: #ffdddd; }
+        .success { background: #ddffdd; }
+    </style>
+</head>
+<body>
+    <h2>Welcome, {{ username }} (Student)</h2>
+    <a href="/logout">Logout</a>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <h3>Upload Text File</h3>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

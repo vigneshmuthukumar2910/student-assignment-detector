@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Content</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .content { white-space: pre-wrap; border: 1px solid #eee; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>File: {{ filename }}</h2>
+    <p><strong>Student:</strong> {{ student }}</p>
+    <p><strong>AI Detection:</strong> {{ result }}</p>
+    
+    <div class="content">{{ content }}</div>
+    
+    <p><a href="/dashboard">Back to submissions</a></p>
+</body>
+</html>

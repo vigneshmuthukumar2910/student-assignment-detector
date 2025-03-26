@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 0 auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        input { width: 100%; padding: 8px; }
+        .alert { padding: 10px; margin-bottom: 15px; }
+        .error { background: #ffdddd; color: #d8000c; }
+        .success { background: #ddffdd; color: #4f8a10; }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST">
+        <div class="form-group">
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    
+    <hr>
+    
+    <h3>Register as Student</h3>
+    <form method="POST">
+        <input type="hidden" name="register" value="true">
+        <div class="form-group">
+            <input type="text" name="reg_username" placeholder="New Username" required minlength="4">
+        </div>
+        <div class="form-group">
+            <input type="password" name="reg_password" placeholder="New Password" required minlength="4">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
